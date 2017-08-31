@@ -1,0 +1,3 @@
+root://eospublic.cern.ch//eos/experiment/alice/release-validation/reference/2017/LHC17l/000277015/17000277015034.101.root
+root://eospublic.cern.ch//eos/experiment/alice/release-validation/reference/2017/LHC17l/000277015/17000277015028.208.root
+root://eospublic.cern.ch//eos/experiment/alice/release-validation/reference/2017/LHC17l/000277015/17000277015037.204.root
