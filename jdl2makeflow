@@ -183,9 +183,9 @@ export {{x}}="{{environment[x]|replace('"', '\\\\"')}}"
 for INP in "${INPUT_LIST[@]}"; do
   PROTO=${INP%%://*}
   UNPACK=
-  [[ $INP == /* ]] || continue  # Makeflow files have been copied already
-  [[ $PROTO != $INP ]] || { PROTO=local; [[ $INP == /* ]] || INP="../$INP"; }
+  [[ $PROTO == $INP ]] && PROTO=local
   [[ $PROTO == local || $PROTO == root ]] || { echo "Input protocol $PROTO not supported"; exit 1; }
+  [[ $PROTO == local && $INP != /* ]] && continue  # already copied by Makeflow
   [[ $INP == *,unpack ]] && { UNPACK=1; INP=${INP//,unpack}; }
   for ((I=1; I<=5; I++)); do
     ERR=0
