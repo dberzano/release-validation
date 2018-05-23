@@ -9,13 +9,14 @@ RV=0
 $ALIDPGSCRIPT "$@" || RV=$?
 
 # Check if we need to rerun it with an externally-supplied calibration
-grep -q 'will not update OCDB' ocdb.log &> /dev/null \
-  && echo "First run had low stats, we need to rerun" \
-  || { echo "No sign of low stats found, exiting"; exit $RV; }
+grep -qE '^E-ProcessOutput:' ocdb.log &> /dev/null \
+  && echo "First run not OK for calibrating, we need to rerun" \
+  || { echo "No problems found, exiting"; exit $RV; }
 
 [[ $ALITPCDCALIBRES_LIST ]] || { echo "Cannot rerun as external list \$ALITPCDCALIBRES_LIST was not set"; exit 1; }
 
-echo "Pretending full stats by using external list $ALITPCDCALIBRES_LIST"
+echo "Faking run by using external list $ALITPCDCALIBRES_LIST"
+mv ocdb.log ocdb_firstrun.log
 rm -f alitpcdcalibres.txt
 cat > copyHere.C <<EOF
 void copyHere() {
