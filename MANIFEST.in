@@ -4,3 +4,4 @@ include jdl2makeflow_helpers/aliprod_train_merge.sh
 include jdl2makeflow_helpers/qa_plots.sh
 include jdl2makeflow_helpers/merge_validation_reports.sh
 include jdl2makeflow_helpers/cpass0SpCalib_fallback.sh
+include jdl2makeflow_helpers/fetch_timeBins_run.sh

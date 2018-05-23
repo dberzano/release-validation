@@ -609,13 +609,14 @@ elif jdl["JobType"] == "Reco":
                              "validation_report.txt",
                              "core*" ],
                  "OutputDir": os.path.join(os.path.dirname(preprocess_var(jdl["OutputDir"], sh_mode=False)), "ResidualMerge", "TPCSPCalibration"),
-                 "Executable": "aliroot_procVDTime.sh",
-                 "Arguments": "tpcSPCalibration.xml %s" % runNumberStr,
+                 "Executable": "fetch_timeBins_run.sh",
+                 "Arguments": "aliroot_procVDTime.sh tpcSPCalibration.xml %s" % runNumberStr,
                  "targetOCDBDir": "local://./OCDB",  # output for OCDB files, it's "same" (raw://) on the Grid (OCDB is prepopulated from tarball)
                  "useTOFBC": "false",
                  "transferToMakeflow": "timeBins.log"
                },
       append={ "InputFile": [ "tpcSPCalibration.xml",
+                              "fetch_timeBins_run.sh",
                               os.path.join(os.path.dirname(preprocess_var(jdl["OutputDir"], sh_mode=False)), "OCDB", "OCDB.tar.bz2,unpack") ],
                "JDLVariables": [ "targetOCDBDir", "useTOFBC", "transferToMakeflow" ] },
       delete=[ "JobRange", "InputFilesFromList" ])
