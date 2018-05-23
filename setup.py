@@ -71,7 +71,7 @@ setup(
   package_data={
     "jdl2makeflow_helpers": [ "spc_merge.C", "spc_merge.sh", "aliprod_train_merge.sh",
                               "qa_plots.sh", "merge_validation_reports.sh",
-                              "cpass0SpCalib_fallback.sh" ]
+                              "cpass0SpCalib_fallback.sh", "fetch_timeBins_run.sh" ]
   },
 
   # Although 'package_data' is the preferred approach, in some case you may
