@@ -328,6 +328,12 @@ node("$RUN_ARCH-relval") {
             cp -v /secrets/eos-proxy .  # fetch EOS proxy in workdir
             preprocess_jdl "${THIS_JDL}.jdl" "${THIS_JDL}_override.jdl"
             echo "Job type was determined to be: ${JOB_TYPE}"
+            echo "=== Environment ==="
+            env
+            echo "=== Override JDL ==="
+            cat "${THIS_JDL}_override.jdl"
+            echo "=== Original JDL ==="
+            cat "${THIS_JDL}.jdl"
             START_AT=
             [[ $JOB_TYPE == rec ]] && START_AT=$REC_START_AT
             [[ $JOB_TYPE == sim ]] && START_AT=$SIM_START_AT
