@@ -170,7 +170,7 @@ function preprocess_jdl() {
     JOB_TYPE=sim
     FULL_OUTPUT_PREFIX="${OUTPUT_XRD}/${RELVAL_NAME}/${JOB_TYPE}"
     FULL_DISPLAY_PREFIX="${OUTPUT_URL}/${RELVAL_NAME}/${JOB_TYPE}"
-    cat <<EoF >> "$JDL_OUT"
+    cat <<EoF > "$JDL_OUT"
 InputFile_append = { "eos-proxy", "cvmfs_environment.sh" };
 Split_override = "production:1-${SIM_NUM_JOBS}";
 SplitArguments_append = " --ocdb \$OCDB_PATH --seed \$MC_SEED";
@@ -198,7 +198,7 @@ EoF
     local RUN_NUMBER=$(( 10#${RUN_NUMBER//\/} ))
     FULL_OUTPUT_PREFIX="${OUTPUT_XRD}/${RELVAL_NAME}/${JOB_TYPE}/alice/data/20${LHC_PERIOD:3:2}/${LHC_PERIOD}/$(printf "%09d" $RUN_NUMBER)"
     FULL_DISPLAY_PREFIX="${OUTPUT_URL}/${RELVAL_NAME}/${JOB_TYPE}/alice/data/20${LHC_PERIOD:3:2}/${LHC_PERIOD}/$(printf "%09d" $RUN_NUMBER)"
-    cat <<EoF >> "$JDL_OUT"
+    cat <<EoF > "$JDL_OUT"
 X509_USER_PROXY = "\$PWD/eos-proxy";
 OCDB_PATH = "/cvmfs/alice-ocdb.cern.ch";
 EVENTS_PER_JOB = "$REC_LIMIT_EVENTS";
